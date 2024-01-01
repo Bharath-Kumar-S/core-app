@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
+import { usersRouter } from "./routes/users.routes";
 
 const PORT = process.env.PORT || 5000;
 mongoose.connect(process.env.DB_URL as string);
@@ -15,6 +16,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+
+app.use("/api/users", usersRouter);
 
 app.get("/api/test", async (req: Request, res: Response) => {
   res.json({ message: "test api" });
