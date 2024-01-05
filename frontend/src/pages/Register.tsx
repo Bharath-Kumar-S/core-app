@@ -2,6 +2,7 @@ import { useAppContext } from "@/contexts/AppContext";
 import { useRegisterUser } from "@/hooks/api/user/register-user";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 export type RegisterFormData = {
   firstName: string;
@@ -13,6 +14,7 @@ export type RegisterFormData = {
 
 export const Register = () => {
   const { showToast } = useAppContext();
+  const navigate = useNavigate();
   const {
     register,
     watch,
@@ -24,11 +26,13 @@ export const Register = () => {
   useEffect(() => {
     if (isSuccess) {
       showToast({ message: "Registration Success!", type: "SUCCESS" });
+      navigate("/");
     }
     if (isError) {
       showToast({ message: "Registration Failed!", type: "ERROR" });
     }
-  }, [isError, isSuccess, showToast]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isError, isSuccess]);
 
   const onSubmit = handleSubmit((data) => {
     mutate(data);
