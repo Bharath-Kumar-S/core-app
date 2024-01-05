@@ -1,3 +1,4 @@
+import { useAppContext } from "@/contexts/AppContext";
 import { useRegisterUser } from "@/hooks/api/user/register-user";
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -11,19 +12,23 @@ export type RegisterFormData = {
 };
 
 export const Register = () => {
+  const { showToast } = useAppContext();
   const {
     register,
     watch,
     handleSubmit,
     formState: { errors },
   } = useForm<RegisterFormData>();
-  const { mutate, isSuccess } = useRegisterUser();
+  const { mutate, isSuccess, isError } = useRegisterUser();
 
   useEffect(() => {
     if (isSuccess) {
-      alert("Registered Successfully");
+      showToast({ message: "Registration Success!", type: "SUCCESS" });
     }
-  }, [isSuccess]);
+    if (isError) {
+      showToast({ message: "Registration Failed!", type: "ERROR" });
+    }
+  }, [isError, isSuccess, showToast]);
 
   const onSubmit = handleSubmit((data) => {
     mutate(data);
