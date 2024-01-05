@@ -3,7 +3,7 @@ import { RegisterFormData } from "../../../pages/Register";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const register = async (formData: RegisterFormData) => {
-  return await fetch(`${API_BASE_URL}/api/users/register`, {
+  const response = await fetch(`${API_BASE_URL}/api/users/register`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -11,9 +11,9 @@ export const register = async (formData: RegisterFormData) => {
     body: JSON.stringify(formData),
   });
 
-  // const responseBody = await response.json();
-  // if (!response.ok) {
-  //   throw new Error(responseBody.message);
-  // }
-  // return responseBody.data;
+  const responseBody = await response.json();
+  if (!response.ok) {
+    throw new Error(responseBody.message);
+  }
+  return responseBody.data;
 };

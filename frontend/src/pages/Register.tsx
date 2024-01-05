@@ -1,5 +1,5 @@
 import { useRegisterUser } from "@/hooks/api/user/register-user";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 export type RegisterFormData = {
@@ -19,9 +19,11 @@ export const Register = () => {
   } = useForm<RegisterFormData>();
   const { mutate, isSuccess } = useRegisterUser();
 
-  if (isSuccess) {
-    alert("Registered Successfully");
-  }
+  useEffect(() => {
+    if (isSuccess) {
+      alert("Registered Successfully");
+    }
+  }, [isSuccess]);
 
   const onSubmit = handleSubmit((data) => {
     mutate(data);
