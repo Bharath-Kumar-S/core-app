@@ -1,4 +1,5 @@
 import express, { Request, Response } from "express";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import "dotenv/config";
 import mongoose from "mongoose";
@@ -15,8 +16,14 @@ db.on("open", () => console.log("Connected to DB!!!!"));
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
