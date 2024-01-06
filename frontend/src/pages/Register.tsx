@@ -1,6 +1,6 @@
 import { useAppContext } from "@/contexts/AppContext";
-import { useRegisterUser } from "@/hooks/api/user/register-user";
-import React, { useEffect } from "react";
+import { useRegisterUser } from "@/hooks/api/user/register/register-user";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
@@ -125,8 +125,8 @@ export const Register = () => {
       <span className="flex flex-row justify-between">
         <span>
           Already have an account?{" "}
-          <a href="/login" className="text-blue-500 hover:underline">
-            Sign Up
+          <a href="/sign-in" className="text-blue-500 hover:underline">
+            Sign In
           </a>
         </span>
         <button

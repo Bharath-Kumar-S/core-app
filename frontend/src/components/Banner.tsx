@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Banner = () => {
   return (
     <div className="bg-blue-800 pb-16">
