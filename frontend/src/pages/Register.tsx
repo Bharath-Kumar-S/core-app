@@ -2,7 +2,7 @@ import { useAppContext } from "@/contexts/AppContext";
 import { useRegisterUser } from "@/hooks/api/user/register/register-user";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export type RegisterFormData = {
   firstName: string;
@@ -125,9 +125,12 @@ export const Register = () => {
       <span className="flex flex-row justify-between">
         <span>
           Already have an account?{" "}
-          <a href="/sign-in" className="text-blue-500 hover:underline">
-            Sign In
-          </a>
+          <Link
+            className="text-blue-500 hover:underline pl-2 underline"
+            to="/sign-in"
+          >
+            Sign In.
+          </Link>
         </span>
         <button
           type="submit"

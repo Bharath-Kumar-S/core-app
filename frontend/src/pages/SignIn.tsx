@@ -2,7 +2,7 @@ import { useAppContext } from "@/contexts/AppContext";
 import { useLoginUser } from "@/hooks/api/user/login/login-user";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 export type SignInFormData = {
   email: string;
@@ -70,10 +70,13 @@ export const SignIn = () => {
       </label>
       <span className="flex flex-row justify-between">
         <span>
-          Don't have an account?{" "}
-          <a href="/register" className="text-blue-500 hover:underline">
-            Register
-          </a>
+          Not register?
+          <Link
+            className="text-blue-500 hover:underline pl-2 underline"
+            to="/register"
+          >
+            Create an account now.
+          </Link>
         </span>
         <button
           type="submit"
