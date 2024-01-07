@@ -5,6 +5,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import { usersRouter } from "./routes/users.routes";
 import { authRouter } from "./routes/auth.routes";
+import path from "path";
 
 const PORT = process.env.PORT || 5000;
 mongoose.connect(process.env.DB_URL as string);
@@ -24,6 +25,8 @@ app.use(
     credentials: true,
   })
 );
+
+app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
