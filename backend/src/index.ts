@@ -7,6 +7,7 @@ import { usersRouter } from "./routes/users.routes";
 import { authRouter } from "./routes/auth.routes";
 import path from "path";
 import { v2 as cloudinary } from "cloudinary";
+import { productRouter } from "./routes/products.routes";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, "../../frontend/dist")));
 
 app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/products", productRouter);
 
 app.get("/api/test", async (req: Request, res: Response) => {
   res.json({ message: "test api" });
