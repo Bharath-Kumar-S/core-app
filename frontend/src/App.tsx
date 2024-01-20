@@ -2,8 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "@/layouts/Layout";
 import { Register } from "@/pages/Register";
 import { SignIn } from "./pages/SignIn";
+import { AddProduct } from "./pages/AddProduct";
+import { useAppContext } from "./contexts/AppContext";
 
 function App() {
+  const { isLoggedIn } = useAppContext();
+
   return (
     <Router>
       <Routes>
@@ -39,6 +43,18 @@ function App() {
             </Layout>
           }
         />
+        {isLoggedIn && (
+          <>
+            <Route
+              path="add-product"
+              element={
+                <Layout>
+                  <AddProduct />
+                </Layout>
+              }
+            />
+          </>
+        )}
         <Route path="*" element={<p>Not found</p>} />
       </Routes>
     </Router>
