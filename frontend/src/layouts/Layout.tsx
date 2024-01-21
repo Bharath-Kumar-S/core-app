@@ -8,10 +8,11 @@ type Props = {
 };
 
 const Layout = ({ children }: Props) => {
+  const location = window.location.pathname;
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <Banner />
+      {location === "/" && <Banner />}
       <div className=" container mx-auto py-10 flex-1">{children}</div>
       <Footer />
     </div>

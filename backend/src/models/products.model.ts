@@ -2,20 +2,12 @@ import mongoose from "mongoose";
 
 export const CategoryEnum = [
   "Electronics",
-  "Clothing",
-  "Home and Furniture",
-  "Beauty and Personal Care",
-  "Sports and Outdoors",
-  "Books and Stationery",
-  "Toys and Games",
-  "Automotive",
-  "Health and Wellness",
-  "Appliances",
-  "Jewelry and Watches",
-  "Baby and Kids",
-  "Pet Supplies",
-  "Food and Beverages",
-  "Office and School Supplies",
+  "Fashion",
+  "Home",
+  "Kitchen",
+  "Sport",
+  "Toys",
+  "Other",
 ];
 
 type variant = {
@@ -35,12 +27,12 @@ export type ProductType = {
   userId: string;
   origin: string;
   name: string;
-  price: number;
+  price: string;
   description: string;
   discount: number;
   category: string;
   brand: string;
-  tags: string;
+  tags: string[];
   stock: {
     quantity: number;
     reserved: number;
@@ -71,7 +63,7 @@ const productShema = new mongoose.Schema<ProductType>({
     required: true,
   },
   price: {
-    type: Number,
+    type: String,
     required: true,
   },
   description: {
@@ -129,9 +121,11 @@ const productShema = new mongoose.Schema<ProductType>({
       },
     },
   ],
-  tags: {
-    type: String,
-  },
+  tags: [
+    {
+      type: String,
+    },
+  ],
 
   attributes: [
     {

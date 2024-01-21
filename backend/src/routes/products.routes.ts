@@ -20,7 +20,7 @@ router.post(
     check("name", "name is required").isString().notEmpty(),
     check("brand", "brand name is required").isString().notEmpty(),
     check("price", "price is required and must be a number")
-      .isNumeric()
+      .isString()
       .notEmpty(),
     check("category", "category is required")
       .isArray()
@@ -36,7 +36,7 @@ router.post(
       const newProduct: ProductType = req.body;
 
       // 1. Upload image
-      const uploadPromises = imageFiles.map(async (image) => {
+      const uploadPromises = imageFiles?.map(async (image) => {
         const base64 = Buffer.from(image.buffer).toString("base64");
         let url = `data:${image.mimetype};base64,${base64}`;
         const res = await v2.uploader.upload(url);
