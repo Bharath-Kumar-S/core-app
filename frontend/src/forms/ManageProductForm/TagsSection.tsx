@@ -1,4 +1,3 @@
-import React from "react";
 import { productTags } from "@/config/product-tags-config";
 import { useFormContext } from "react-hook-form";
 import { ProductFormData } from "./ManageProductForm";
