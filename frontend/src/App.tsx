@@ -46,7 +46,7 @@ function App() {
         {isLoggedIn && (
           <>
             <Route
-              path="add-product"
+              path="/add-products"
               element={
                 <Layout>
                   <AddProduct />
