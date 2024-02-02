@@ -41,6 +41,10 @@ app.use("/api/auth", authRouter);
 app.use("/api/users", usersRouter);
 app.use("/api/products", productRouter);
 
+app.get("*", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"));
+});
+
 app.get("/api/test", async (req: Request, res: Response) => {
   res.json({ message: "test api" });
 });
