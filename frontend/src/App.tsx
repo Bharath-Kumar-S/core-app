@@ -4,6 +4,7 @@ import { Register } from "@/pages/Register";
 import { SignIn } from "./pages/SignIn";
 import { AddProduct } from "./pages/AddProduct";
 import { useAppContext } from "./contexts/AppContext";
+import { AllProducts } from "./pages/AllProducts";
 
 function App() {
   const { isLoggedIn } = useAppContext();
@@ -50,6 +51,14 @@ function App() {
               element={
                 <Layout>
                   <AddProduct />
+                </Layout>
+              }
+            />
+            <Route
+              path="/all-products"
+              element={
+                <Layout>
+                  <AllProducts />
                 </Layout>
               }
             />
