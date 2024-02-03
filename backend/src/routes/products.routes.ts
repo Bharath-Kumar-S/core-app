@@ -61,4 +61,127 @@ router.post(
   }
 );
 
+router.get("/", async (req: Request, res: Response) => {
+  try {
+    const products = await Product.find();
+    return res.status(200).send(products);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+    return;
+  }
+});
+
+router.get("/:id", async (req: Request, res: Response) => {
+  try {
+    const product = await Product.findById(req.params.id);
+    return product
+      ? res.status(200).send(product)
+      : res.status(404).send({ message: "Product not found" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+    return;
+  }
+});
+
+router.delete("/:id", verifyToken, async (req: Request, res: Response) => {
+  try {
+    const product = await Product.findByIdAndDelete(req.params.id);
+    return product
+      ? res.status(200).send(product)
+      : res.status(404).send({ message: "Product not found" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+    return;
+  }
+});
+
+router.put("/:id", verifyToken, async (req: Request, res: Response) => {
+  try {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    return res.status(200).send(product);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+    return;
+  }
+});
+
+router.get("/search/:name", async (req: Request, res: Response) => {
+  try {
+    const products = await Product.find({
+      name: { $regex: req.params.name, $options: "i" },
+    });
+    // check array is empty
+    return products.length !== 0
+      ? res.status(200).send(products)
+      : res.status(404).send({ message: "Product not found" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+    return;
+  }
+});
+
+router.get("/category/:category", async (req: Request, res: Response) => {
+  try {
+    const products = await Product.find({ category: req.params.category });
+    return res.status(200).send(products);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+    return;
+  }
+});
+
+router.get("/brand/:brand", async (req: Request, res: Response) => {
+  try {
+    const products = await Product.find({ brand: req.params.brand });
+    return res.status(200).send(products);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+    return;
+  }
+});
+
+router.get("/price/:price", async (req: Request, res: Response) => {
+  try {
+    const products = await Product.find({ price: req.params.price });
+    return res.status(200).send(products);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+    return;
+  }
+});
+
+router.get("/origin/:origin", async (req: Request, res: Response) => {
+  try {
+    const products = await Product.find({ origin: req.params.origin });
+    return res.status(200).send(products);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+    return;
+  }
+});
+
+router.get("/user/:userId", async (req: Request, res: Response) => {
+  try {
+    const products = await Product.find({ userId: req.params.userId });
+    return products.length !== 0
+      ? res.status(200).send(products)
+      : res.status(404).send({ message: "Product not found" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Something went wrong" });
+    return;
+  }
+});
+
 export const productRouter = router;

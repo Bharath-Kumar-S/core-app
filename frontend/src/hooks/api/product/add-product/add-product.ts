@@ -1,5 +1,5 @@
 import { useAppContext } from "@/contexts/AppContext";
-import { addProduct } from "@/hooks/api/product/fetcher";
+import { addProduct } from "@/hooks/api/product/add-product/fetcher";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const useAddProduct = () => {
