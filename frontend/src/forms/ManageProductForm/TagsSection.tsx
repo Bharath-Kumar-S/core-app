@@ -22,7 +22,7 @@ export const TagsSection = () => {
       <h2 className="text-2xl font-bold mb-3">Academic Marks</h2>
       <div className="grid grid-cols-8 gap-3">
         {subjects.map((subject) => (
-          <div key={subject}>
+          <>
             <label className="text-gray-700 text-sm font-bold flex-1 col-span-2">
               {subject}
             </label>
@@ -68,7 +68,7 @@ export const TagsSection = () => {
                 },
               })}
             />
-          </div>
+          </>
         ))}
       </div>
       {errors.marks && (
