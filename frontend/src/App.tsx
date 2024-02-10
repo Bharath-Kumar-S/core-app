@@ -1,18 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "@/layouts/Layout";
-import { Register } from "@/pages/Register";
-import { SignIn } from "./pages/SignIn";
-import { AddProduct } from "./pages/AddProduct";
-import { useAppContext } from "./contexts/AppContext";
-import { AllProducts } from "./pages/AllProducts";
+// import { Register } from "@/pages/Register";
+// import { SignIn } from "./pages/SignIn";
+// import { AddProduct } from "./pages/AddProduct";
+import { Enquiry } from "./pages/Enquiry";
+// import { useAppContext } from "./contexts/AppContext";
+// import { AllProducts } from "./pages/AllProducts";
 
 function App() {
-  const { isLoggedIn } = useAppContext();
+  // const { isLoggedIn } = useAppContext();
 
   return (
     <Router>
       <Routes>
-        <Route
+        {/* <Route
           path="/"
           element={
             <Layout>
@@ -45,16 +46,16 @@ function App() {
           }
         />
         {isLoggedIn && (
-          <>
-            <Route
-              path="/add-products"
-              element={
-                <Layout>
-                  <AddProduct />
-                </Layout>
-              }
-            />
-            <Route
+          <> */}
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Enquiry />
+            </Layout>
+          }
+        />
+        {/* <Route
               path="/all-products"
               element={
                 <Layout>
@@ -63,7 +64,7 @@ function App() {
               }
             />
           </>
-        )}
+        )} */}
         <Route path="*" element={<p>Not found</p>} />
       </Routes>
     </Router>

@@ -8,9 +8,71 @@ export const ProductsDetails = () => {
   } = useFormContext<ProductFormData>();
   return (
     <div className="flex flex-col gap-4">
-      <h1 className="text-3xl font-bold mb-3">Add Product</h1>
+      <h1 className="text-3xl font-bold mb-3">Course Information</h1>
+      <div className="flex flex-row gap-10 justify-between">
+        <label className="text-gray-700 text-sm font-bold max-w-[50%]">
+          Course applied for
+          <select
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("course", { required: "This field is required" })}
+          >
+            <option value="" className="text-sm font-bold">
+              Select a course
+            </option>
+            <option value="B.Optom. - Bachelor of Optometry">
+              B.Optom. - Bachelor of Optometry
+            </option>
+            <option value="B.Sc - Physician Assistant">
+              B.Sc - Physician Assistant
+            </option>
+            <option value="M.Sc. Audiology">M.Sc. Audiology</option>
+            <option value="BASLP - Bachelor of Audiology & Speech">
+              BASLP - Bachelor of Audiology & Speech
+            </option>
+            <option value="Language and Pathology">
+              Language and Pathology
+            </option>
+            {/* <option value="Toys">Toys</option>
+          <option value="Other">Other</option> */}
+          </select>
+          {errors.course && (
+            <span className="text-red-500 text-sm">
+              {errors.course.message}
+            </span>
+          )}
+        </label>
+        <label className="text-gray-700 text-sm font-bold max-w-[50%]">
+          College Name
+          <select
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("college", { required: "This field is required" })}
+          >
+            <option value="" className="text-sm font-bold">
+              Select a college
+            </option>
+            <option value="School of ALLIED HEALTH SCIENCES salem">
+              School of ALLIED HEALTH SCIENCES salem
+            </option>
+            <option value="School of ALLIED HEALTH SCIENCES Karikal">
+              School of ALLIED HEALTH SCIENCES Karikal
+            </option>
+            <option value="School of ALLIED HEALTH SCIENCES Puducherry">
+              School of ALLIED HEALTH SCIENCES Puducherry
+            </option>
+            <option value="SCHOOL OF REHABILITATION AND BEHAVIOURAL SCIENCES, PUDUCHERRY">
+              SCHOOL OF REHABILITATION AND BEHAVIOURAL SCIENCES, PUDUCHERRY
+            </option>
+          </select>
+          {errors.college && (
+            <span className="text-red-500 text-sm">
+              {errors.college.message}
+            </span>
+          )}
+        </label>
+      </div>
+      <h1 className="text-3xl font-bold mb-3">General Information</h1>
       <label className="text-gray-700 text-sm font-bold flex-1">
-        Name
+        Name of the Candidate
         <input
           type="text"
           className="border rounded w-full py-1 px-2 font-normal"
@@ -20,147 +82,229 @@ export const ProductsDetails = () => {
           <span className="text-red-500 text-sm">{errors.name.message}</span>
         )}
       </label>
-      <label className="text-gray-700 text-sm font-bold max-w-[50%]">
-        Brand
+      <label className="text-gray-700 text-sm font-bold flex-1">
+        Email
         <input
-          type="text"
+          type="email"
+          placeholder="email"
           className="border rounded w-full py-1 px-2 font-normal"
-          {...register("brand", { required: "This field is required" })}
+          {...register("email", { required: "This field is required" })}
         />
-        {errors.brand && (
-          <span className="text-red-500 text-sm">{errors.brand.message}</span>
+        {errors.email && (
+          <span className="text-red-500 text-sm">{errors.email.message}</span>
         )}
       </label>
+
       <div className="flex gap-4">
         <label className="text-gray-700 text-sm font-bold flex-1">
-          Price
+          Parent/Guardian
           <input
-            type="number"
-            placeholder="0"
-            min={1}
+            type="text"
             className="border rounded w-full py-1 px-2 font-normal"
-            {...register("price", { required: "This field is required" })}
+            {...register("parent", { required: "This field is required" })}
           />
-          {errors.price && (
-            <span className="text-red-500 text-sm">{errors.price.message}</span>
-          )}
-        </label>
-        <label className="text-gray-700 text-sm font-bold flex-1">
-          Quantity
-          <input
-            type="number"
-            placeholder="0"
-            min={1}
-            className="border rounded w-full py-1 px-2 font-normal"
-            {...register("quantity", { required: "This field is required" })}
-          />
-          {errors.quantity && (
+          {errors.parent && (
             <span className="text-red-500 text-sm">
-              {errors.quantity.message}
+              {errors.parent.message}
             </span>
           )}
         </label>
         <label className="text-gray-700 text-sm font-bold flex-1">
-          Origin
+          Aadhar No
           <input
             type="text"
-            placeholder="Specify origin"
+            placeholder="aadhar"
             className="border rounded w-full py-1 px-2 font-normal"
-            {...register("origin", { required: "This field is required" })}
+            {...register("aadhar", { required: "This field is required" })}
           />
-          {errors.origin && (
+          {errors.aadhar && (
             <span className="text-red-500 text-sm">
-              {errors.origin.message}
+              {errors.aadhar.message}
+            </span>
+          )}
+        </label>
+        <label className="text-gray-700 text-sm font-bold flex-1">
+          Mobile
+          <input
+            type="number"
+            placeholder="mobile"
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("mobile", { required: "This field is required" })}
+          />
+          {errors.mobile && (
+            <span className="text-red-500 text-sm">
+              {errors.mobile.message}
             </span>
           )}
         </label>
       </div>
+      <div className="flex gap-4">
+        <label className="text-gray-700 text-sm font-bold flex-1">
+          Gender
+          <select
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("gender", { required: "This field is required" })}
+          >
+            <option value="" className="text-sm font-bold">
+              Select a gender
+            </option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          {errors.gender && (
+            <span className="text-red-500 text-sm">
+              {errors.gender.message}
+            </span>
+          )}
+        </label>
+        <label className="text-gray-700 text-sm font-bold flex-1">
+          Date of Birth
+          <input
+            type="date"
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("dob", { required: "This field is required" })}
+          />
+          {errors.dob && (
+            <span className="text-red-500 text-sm">{errors.dob.message}</span>
+          )}
+        </label>
+        <label className="text-gray-700 text-sm font-bold flex-1">
+          Nationality
+          <input
+            type="text"
+            placeholder="Specify nationality"
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("nationality", { required: "This field is required" })}
+          />
+          {errors.nationality && (
+            <span className="text-red-500 text-sm">
+              {errors.nationality.message}
+            </span>
+          )}
+        </label>
+      </div>
+
+      <div className="flex gap-4">
+        <label className="text-gray-700 text-sm font-bold flex-1">
+          Religion
+          <input
+            type="text"
+            placeholder="Specify religion"
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("religion", { required: "This field is required" })}
+          />
+          {errors.religion && (
+            <span className="text-red-500 text-sm">
+              {errors.religion.message}
+            </span>
+          )}
+        </label>
+        <label className="text-gray-700 text-sm font-bold flex-1">
+          Community
+          <input
+            type="text"
+            placeholder="Specify community"
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("community", { required: "This field is required" })}
+          />
+          {errors.community && (
+            <span className="text-red-500 text-sm">
+              {errors.community.message}
+            </span>
+          )}
+        </label>
+        <label className="text-gray-700 text-sm font-bold flex-1">
+          Caste
+          <input
+            type="text"
+            placeholder="Specify caste"
+            className="border rounded w-full py-1 px-2 font-normal"
+            {...register("caste", { required: "This field is required" })}
+          />
+          {errors.caste && (
+            <span className="text-red-500 text-sm">{errors.caste.message}</span>
+          )}
+        </label>
+      </div>
       <label className="text-gray-700 text-sm font-bold flex-1">
-        Description
+        Address
+        <textarea
+          rows={2}
+          className="border rounded w-full py-1 px-2 font-normal"
+          {...register("address", { required: "This field is required" })}
+        />
+        {errors.address && (
+          <span className="text-red-500 text-sm">{errors.address.message}</span>
+        )}
+      </label>
+      <label className="text-gray-700 text-sm font-bold flex-1">
+        Enquiry
         <textarea
           rows={5}
           className="border rounded w-full py-1 px-2 font-normal"
-          {...register("description", { required: "This field is required" })}
+          {...register("enquiry", { required: "This field is required" })}
         />
-        {errors.description && (
-          <span className="text-red-500 text-sm">
-            {errors.description.message}
-          </span>
+        {errors.enquiry && (
+          <span className="text-red-500 text-sm">{errors.enquiry.message}</span>
         )}
       </label>
-      <label className="text-gray-700 text-sm font-bold max-w-[50%]">
-        Category
-        <select
-          className="border rounded w-full py-1 px-2 font-normal"
-          {...register("category", { required: "This field is required" })}
-        >
-          <option value="" className="text-sm font-bold">
-            Select a category
-          </option>
-          <option value="Electronics">Electronics</option>
-          <option value="Fashion">Fashion</option>
-          <option value="Home">Home</option>
-          <option value="Kitchen">Kitchen</option>
-          <option value="Sport">Sport</option>
-          <option value="Toys">Toys</option>
-          <option value="Other">Other</option>
-        </select>
-        {errors.category && (
-          <span className="text-red-500 text-sm">
-            {errors.category.message}
-          </span>
-        )}
-      </label>
+      <h1 className="text-3xl font-bold mb-3">Academic Information</h1>
       <div className="flex gap-4">
         <label className="text-gray-700 text-sm font-bold flex-1">
-          Colour
+          Qualifying Examination Passed
           <input
-            defaultValue="#000000"
-            type="color"
+            type="text"
+            placeholder="Specify Qualifying Examination Passed"
             className="border rounded w-full py-1 px-2 font-normal"
-            {...register("colour")}
+            {...register("passedExam", { required: "This field is required" })}
           />
-          {errors.colour && (
+          {errors.passedExam && (
             <span className="text-red-500 text-sm">
-              {errors.colour.message}
+              {errors.passedExam.message}
             </span>
           )}
         </label>
         <label className="text-gray-700 text-sm font-bold flex-1">
-          Material
+          Month & Year of Passing / Reg No
           <input
             type="text"
+            placeholder="Specify MM-YYYY & Reg No"
             className="border rounded w-full py-1 px-2 font-normal"
-            {...register("material")}
+            {...register("passingYear", { required: "This field is required" })}
           />
-          {errors.material && (
+          {errors.passingYear && (
             <span className="text-red-500 text-sm">
-              {errors.material.message}
+              {errors.passingYear.message}
             </span>
           )}
         </label>
+      </div>
+      <div className="flex gap-4">
         <label className="text-gray-700 text-sm font-bold flex-1">
-          Size
+          Name of the School
           <input
-            type="text"
+            type="number"
+            placeholder="School name"
             className="border rounded w-full py-1 px-2 font-normal"
-            {...register("size")}
+            {...register("school", { required: "This field is required" })}
           />
-          {errors.size && (
-            <span className="text-red-500 text-sm">{errors.size.message}</span>
+          {errors.school && (
+            <span className="text-red-500 text-sm">
+              {errors.school.message}
+            </span>
           )}
         </label>
+
         <label className="text-gray-700 text-sm font-bold flex-1">
-          Weight
+          Name of the Board
           <input
-            type="text"
+            type="number"
+            placeholder="Board name"
             className="border rounded w-full py-1 px-2 font-normal"
-            {...register("weight")}
+            {...register("board", { required: "This field is required" })}
           />
-          {errors.weight && (
-            <span className="text-red-500 text-sm">
-              {errors.weight.message}
-            </span>
+          {errors.board && (
+            <span className="text-red-500 text-sm">{errors.board.message}</span>
           )}
         </label>
       </div>

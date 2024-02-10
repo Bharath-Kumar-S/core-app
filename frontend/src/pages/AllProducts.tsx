@@ -24,14 +24,14 @@ export const AllProducts = () => {
         </Link>
       </span>
       <div className="grid grid-cols-1 gap-8">
-        {data?.map((product) => (
+        {/* {data?.map((product) => (
           <div key={product.id} className="flex flex-col gap-2">
             <h1>{product.name}</h1>
             <img src={product.imageUrls[0]} alt={product.name} />
             <p>{product.description}</p>
             <p>{product.price}</p>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );

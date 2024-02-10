@@ -1,0 +1,21 @@
+{
+  "_id": { "$oid": "65c725a0ce2a069799200c76" },
+  "userId": "6597187a5d85cbb792224029",
+  "name": "ghfhgfj",
+  "brand": "ghgjk",
+  "price": "5",
+  "description": "uyggfukygf",
+  "category": "Electronics",
+  "origin": "vbgcdghf",
+  "tags": ["clothing"],
+  "imageUrls": [
+    "http://res.cloudinary.com/ddqzv6d3i/image/upload/v1707550109/ipzujvacxgeqf0dudqym.jpg",
+    "http://res.cloudinary.com/ddqzv6d3i/image/upload/v1707550108/colx4ltnurqyjotqcyiy.jpg",
+    "http://res.cloudinary.com/ddqzv6d3i/image/upload/v1707550109/nmmrenr1pjbi3lzzd3s6.png",
+    "http://res.cloudinary.com/ddqzv6d3i/image/upload/v1707550110/ko6lofhfpsopypqnrel4.png"
+  ],
+  "reviews": [],
+  "attributes": [],
+  "variants": [],
+  "__v": { "$numberInt": "0" }
+}

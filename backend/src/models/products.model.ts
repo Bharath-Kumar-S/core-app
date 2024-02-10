@@ -1,171 +1,116 @@
 import mongoose from "mongoose";
 
-export const CategoryEnum = [
-  "Electronics",
-  "Fashion",
-  "Home",
-  "Kitchen",
-  "Sport",
-  "Toys",
-  "Other",
-];
-
-type variant = {
-  color: string;
-  size: string;
-  material: string;
-  weight: number;
-  dimensions: {
-    width: number;
-    height: number;
-    length: number;
-  };
-};
-
-export type ProductType = {
+export type EnquiryType = {
   _id: string;
-  userId: string;
-  origin: string;
+  nationality: string;
   name: string;
-  price: string;
-  description: string;
-  discount: number;
-  category: string;
-  brand: string;
-  tags: string[];
-  stock: {
-    quantity: number;
-    reserved: number;
-    sold: number;
-  };
+  course: string;
+  college: string;
+  email: string;
+  aadhar: string;
+  parent: string;
+  mobile: string;
+  gender: string;
+  address: string;
   imageUrls: string[];
-  attributes: variant;
-  reviews: {
-    user: string;
-    rating: number;
-    comment: string;
-    date: string;
-  }[];
-  variants?: variant[];
+  passed_exam: string;
+  school: string;
+  board: string;
+  passing_year: string;
+  enquiry: string;
+  religion: string;
+  caste: string;
+  community: string;
+  dob: string;
+  percentage: string;
 };
 
-const productShema = new mongoose.Schema<ProductType>({
-  userId: {
-    type: String,
-    required: true,
-  },
+const enquiryShema = new mongoose.Schema<EnquiryType>({
   name: {
     type: String,
     required: true,
   },
-  brand: {
+  nationality: {
     type: String,
     required: true,
   },
-  price: {
+  aadhar: {
     type: String,
     required: true,
   },
-  description: {
+  address: {
     type: String,
     required: true,
   },
-  category: {
-    type: String,
-    required: true,
-    validate: {
-      validator: function (value: string) {
-        return CategoryEnum.includes(value);
-      },
-      message: "Please provide an array of valid categories.",
-    },
-  },
-  stock: {
-    type: {
-      quantity: {
-        type: Number,
-        default: 0,
-      },
-      reserved: {
-        type: Number,
-        default: 0,
-      },
-      sold: {
-        type: Number,
-        default: 0,
-      },
-    },
-  },
-  origin: {
+  college: {
     type: String,
     required: true,
   },
-  reviews: [
-    {
-      type: {
-        user: {
-          type: String,
-          required: true,
-        },
-        rating: {
-          type: Number,
-          required: true,
-          min: 1,
-          max: 5,
-        },
-        comment: {
-          type: String,
-          required: true,
-        },
-        date: Date,
-      },
-    },
-  ],
-  tags: [
-    {
-      type: String,
-    },
-  ],
-
-  attributes: [
-    {
-      type: {
-        color: {
-          type: String,
-        },
-        size: {
-          type: String,
-        },
-        material: {
-          type: String,
-        },
-        length: {
-          type: Number,
-        },
-      },
-    },
-  ],
-  variants: [
-    {
-      type: {
-        color: {
-          type: String,
-        },
-        size: {
-          type: String,
-        },
-        material: {
-          type: String,
-        },
-        length: {
-          type: Number,
-        },
-      },
-    },
-  ],
-  discount: {
-    type: Number,
+  course: {
+    type: String,
+    required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
+  mobile: {
+    type: String,
+    required: true,
+  },
+  parent: {
+    type: String,
+    required: true,
+  },
+  gender: {
+    type: String,
+    required: true,
+  },
+  passed_exam: {
+    type: String,
+    required: true,
+  },
+  school: {
+    type: String,
+    required: true,
+  },
+  board: {
+    type: String,
+    required: true,
+  },
+  passing_year: {
+    type: String,
+    required: true,
+  },
+  enquiry: {
+    type: String,
+    required: true,
+  },
+  religion: {
+    type: String,
+    required: true,
+  },
+  caste: {
+    type: String,
+    required: true,
+  },
+  community: {
+    type: String,
+    required: true,
+  },
+  dob: {
+    type: String,
+    required: true,
+  },
+  percentage: {
+    type: String,
+    required: true,
+  },
+  // tags: [
+  //   {
+  //     type: String,
+  //   },
+  // ],
   imageUrls: [
     {
       type: String,
@@ -174,4 +119,4 @@ const productShema = new mongoose.Schema<ProductType>({
   ],
 });
 
-export const Product = mongoose.model<ProductType>("Product", productShema);
+export const Enquiry = mongoose.model<EnquiryType>("Enquiry", enquiryShema);
