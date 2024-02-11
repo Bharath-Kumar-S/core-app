@@ -39,6 +39,18 @@ export const ManageProductForm = ({ onSubmit: onAdd, isLoading }: Props) => {
   const formMethods = useForm<ProductFormData>();
   const { handleSubmit } = formMethods;
 
+  // Create a reference to the SignatureCanvas component
+  const signatureRef = useRef<SignatureCanvas>(null);
+
+  // Clear the signature pad
+  const clearSignature = (event: React.MouseEvent<HTMLButtonElement>) => {
+    // Ensure signatureRef.current is not undefined before accessing its properties
+    if (signatureRef.current) {
+      signatureRef.current.clear();
+    }
+    event.preventDefault();
+  };
+
   const onSubmit = handleSubmit((formDataJson: ProductFormData) => {
     const formData = new FormData();
     formData.append("nationality", formDataJson.nationality);
@@ -68,22 +80,13 @@ export const ManageProductForm = ({ onSubmit: onAdd, isLoading }: Props) => {
       formData.append("imageFiles", file);
     });
     formData.append("percentage", formDataJson.percentage);
-    console.log(formData);
+    formData.append(
+      "signature",
+      signatureRef.current ? signatureRef.current.toDataURL() : ""
+    );
     onAdd(formData);
     formMethods.reset();
   });
-
-  // Create a reference to the SignatureCanvas component
-  const signatureRef = useRef<SignatureCanvas>(null);
-
-  // Clear the signature pad
-  const clearSignature = (event: React.MouseEvent<HTMLButtonElement>) => {
-    // Ensure signatureRef.current is not undefined before accessing its properties
-    if (signatureRef.current) {
-      signatureRef.current.clear();
-    }
-    event.preventDefault();
-  };
 
   return (
     <FormProvider {...formMethods}>

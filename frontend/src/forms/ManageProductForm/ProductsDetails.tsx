@@ -75,6 +75,7 @@ export const ProductsDetails = () => {
         Name of the Candidate
         <input
           type="text"
+          placeholder="student name"
           className="border rounded w-full py-1 px-2 font-normal"
           {...register("name", { required: "This field is required" })}
         />
@@ -100,6 +101,7 @@ export const ProductsDetails = () => {
           Parent/Guardian
           <input
             type="text"
+            placeholder="parent/guardian name"
             className="border rounded w-full py-1 px-2 font-normal"
             {...register("parent", { required: "This field is required" })}
           />
@@ -230,6 +232,7 @@ export const ProductsDetails = () => {
         Address
         <textarea
           rows={2}
+          placeholder="Specify address"
           className="border rounded w-full py-1 px-2 font-normal"
           {...register("address", { required: "This field is required" })}
         />
@@ -241,6 +244,7 @@ export const ProductsDetails = () => {
         Enquiry
         <textarea
           rows={5}
+          placeholder="Specify enquiry"
           className="border rounded w-full py-1 px-2 font-normal"
           {...register("enquiry", { required: "This field is required" })}
         />
@@ -283,7 +287,7 @@ export const ProductsDetails = () => {
         <label className="text-gray-700 text-sm font-bold flex-1">
           Name of the School
           <input
-            type="number"
+            type="text"
             placeholder="School name"
             className="border rounded w-full py-1 px-2 font-normal"
             {...register("school", { required: "This field is required" })}
@@ -298,7 +302,7 @@ export const ProductsDetails = () => {
         <label className="text-gray-700 text-sm font-bold flex-1">
           Name of the Board
           <input
-            type="number"
+            type="text"
             placeholder="Board name"
             className="border rounded w-full py-1 px-2 font-normal"
             {...register("board", { required: "This field is required" })}

@@ -8,11 +8,11 @@ export const useAddProduct = () => {
   return useMutation({
     mutationFn: addProduct,
     onSuccess: async () => {
-      showToast({ message: "Product Created!", type: "SUCCESS" });
+      showToast({ message: "Enquiry Created!", type: "SUCCESS" });
       await queryClient.invalidateQueries({ queryKey: ["addProduct"] });
     },
     onError: () => {
-      showToast({ message: "Error creating product!", type: "ERROR" });
+      showToast({ message: "Error creating enquiry!", type: "ERROR" });
     },
   });
 };

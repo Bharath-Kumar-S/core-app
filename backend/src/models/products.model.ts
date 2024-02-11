@@ -23,6 +23,7 @@ export type EnquiryType = {
   community: string;
   dob: string;
   percentage: string;
+  signature: string;
 };
 
 const enquiryShema = new mongoose.Schema<EnquiryType>({
@@ -111,6 +112,10 @@ const enquiryShema = new mongoose.Schema<EnquiryType>({
   //     type: String,
   //   },
   // ],
+  signature: {
+    type: String,
+    required: true,
+  },
   imageUrls: [
     {
       type: String,
