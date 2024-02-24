@@ -26,11 +26,11 @@ db.on("open", () => console.log("Connected to DB!!!!"));
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
+console.log(process.env.FRONTEND_URL)
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin:
-      process.env.ENV === "PROD" ? /onrender\.com$/ : process.env.FRONTEND_URL,
+    origin: process.env.ENV === "PROD" ? /onrender\.com$/ : process.env.FRONTEND_URL,
     credentials: true,
   })
 );

@@ -13,7 +13,7 @@ export const Header = () => {
         <span className="flex space-x-2">
           {isLoggedIn ? (
             <>
-              <Link
+              {/* <Link
                 className="flex items-center text-white px-3 font-bold hover:bg-gray-300 hover:text-black"
                 to="/my-bookings"
               >
@@ -24,6 +24,12 @@ export const Header = () => {
                 to="/my-hotels"
               >
                 Search Products
+              </Link> */}
+              <Link
+                className="flex items-center text-white px-3 font-bold hover:bg-gray-300 hover:text-black"
+                to="/add-products"
+              >
+                Add Products
               </Link>
               <SignOutButton />
             </>
