@@ -23,11 +23,18 @@ export const AllProducts = () => {
           Add Product
         </Link>
       </span>
-      <div className="grid grid-cols-1 gap-8">
-        {data?.map((product:any) => (
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        {data?.map((product: any) => (
           <div key={product.id} className="flex flex-col gap-2">
+            <div style={{ height: "200px", width: "300px" }}>
+              <img
+                className="hover:scale-105"
+                src={product.imageUrls[0]}
+                alt={product.name}
+                style={{ width: "100%", height: "100%" }}
+              />
+            </div>
             <h1>{product.name}</h1>
-            <img src={product.imageUrls[0]} alt={product.name} />
             <p>{product.description}</p>
             <p>{product.price}</p>
           </div>

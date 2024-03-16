@@ -6,7 +6,7 @@ export const Header = () => {
   const { isLoggedIn } = useAppContext();
   return (
     <div className="bg-gray-800 py-6">
-      <div className="container mx-auto flex justify-between">
+      <div className="container flex justify-between">
         <span className="text-3xl text-white font-bold tracking-tight">
           <Link to="/">Store.com</Link>
         </span>
